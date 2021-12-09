@@ -1,6 +1,41 @@
-let prevNumber, prevOperator, result, expression, explosion, colorScheme;
+let prevNumber, prevOperator, result, expression, explosion;
 let decimalUsed = false
+const buttons = ["C", "CE", "%", "+", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "÷", "", "0", ".", "=",];
 
+// random button theming
+const rng = (lower, upper) => Math.floor(lower + (upper + 1 - lower) * Math.random());
+h = rng(0, 360)
+s = rng(20, 50)
+const theme = `hsl(${h}deg,${s}%,${40}%)`;
+let themeAlt = `hsl(${h}deg,${s}%,${90}%)`;
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+	themeAlt = `hsl(${h}deg,${s}%,${10}%)`;
+}
+
+const buttonProps = {
+	C: { color: theme },
+	CE: { color: theme },
+	"%": { color: theme },
+	"+": { color: theme },
+	7: { color: themeAlt },
+	8: { color: themeAlt },
+	9: { color: themeAlt },
+	x: { color: theme },
+	4: { color: themeAlt },
+	5: { color: themeAlt },
+	6: { color: themeAlt },
+	"-": { color: theme },
+	1: { color: themeAlt },
+	2: { color: themeAlt },
+	3: { color: themeAlt },
+	"÷": { color: theme },
+	"": { color: themeAlt },
+	0: { color: themeAlt },
+	".": { color: themeAlt },
+	"=": { color: theme },
+};
+
+//functions
 const clearScreen = (a, b) => {
 	if (a, b) {
 		expression.innerHTML = a;
@@ -66,15 +101,6 @@ const handleOperator = (operator) => {
 	}
 };
 
-//fun, try pressing the blank button
-const burnItDown = () => {
-	explosion.style.display = 'block';
-	explosion.src = './fun.gif';
-	setTimeout(() => {
-		window.close();
-	}, 1000)
-}
-
 const handleClick = (buttonName) => {
 	result.innerHTML.includes(".") ? decimalUsed = true : decimalUsed = false;
 	if (!buttonName) return burnItDown();
@@ -117,37 +143,11 @@ window.addEventListener("load", () => {
 	});
 });
 
-const buttons = ["C", "CE", "%", "+", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "÷", "", "0", ".", "=",];
-
-// random button theming
-const rng = (lower, upper) => Math.floor(lower + (upper + 1 - lower) * Math.random());
-h = rng(0, 360)
-s = rng(20, 50)
-const theme = `hsl(${h}deg,${s}%,${40}%)`;
-let themeLightOrDark = `hsl(${h}deg,${s}%,${90}%)`;
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-	themeLightOrDark = `hsl(${h}deg,${s}%,${10}%)`;
+//fun, try pressing the blank button
+const burnItDown = () => {
+	explosion.style.display = 'block';
+	explosion.src = './fun.gif';
+	setTimeout(() => {
+		window.close();
+	}, 1000)
 }
-
-const buttonProps = {
-	C: { color: theme },
-	CE: { color: theme },
-	"%": { color: theme },
-	"+": { color: theme },
-	7: { color: themeLightOrDark },
-	8: { color: themeLightOrDark },
-	9: { color: themeLightOrDark },
-	x: { color: theme },
-	4: { color: themeLightOrDark },
-	5: { color: themeLightOrDark },
-	6: { color: themeLightOrDark },
-	"-": { color: theme },
-	1: { color: themeLightOrDark },
-	2: { color: themeLightOrDark },
-	3: { color: themeLightOrDark },
-	"÷": { color: theme },
-	"": { color: themeLightOrDark },
-	0: { color: themeLightOrDark },
-	".": { color: themeLightOrDark },
-	"=": { color: theme },
-};
