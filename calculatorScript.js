@@ -82,7 +82,7 @@ const handleClick = (buttonName) => {
 				0,
 				result.innerHTML.length - 1
 			);
-	} else if (!isNaN(buttonName)) {
+	} else if (!isNaN(buttonName) || buttonName == ".") {
 		if (result.innerHTML === "") result.innerHTML = buttonName;
 		else if (result.innerHTML.length < 9) result.innerHTML += buttonName;
 	} else handleOperator(buttonName);
@@ -107,8 +107,7 @@ window.addEventListener("load", () => {
 	});
 });
 
-const buttons = ["C", "CE", "%", "+", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "÷", "", "0", ".", "=",
-];
+const buttons = ["C", "CE", "%", "+", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "÷", "", "0", ".", "=",];
 
 const rng = (lower, upper) => Math.floor(lower + (upper + 1 - lower) * Math.random());
 h=rng(0, 360)
@@ -117,24 +116,24 @@ const theme = `hsl(${h}deg,${s}%,${40}%)`, lightBtn = `hsl(${h}deg,${s}%,${90}%)
 
 
 const buttonProps = {
-	"C": { color: theme },
-	"CE": { color: theme },
+	C: { color: theme },
+	CE: { color: theme },
 	"%": { color: theme },
 	"+": { color: theme },
-	"7": { color: lightBtn },
-	"8": { color: lightBtn },
-	"9": { color: lightBtn },
-	"x": { color: theme },
-	"4": { color: lightBtn },
-	"5": { color: lightBtn },
-	"6": { color: lightBtn },
+	7: { color: lightBtn },
+	8: { color: lightBtn },
+	9: { color: lightBtn },
+	x: { color: theme },
+	4: { color: lightBtn },
+	5: { color: lightBtn },
+	6: { color: lightBtn },
 	"-": { color: theme },
-	"1": { color: lightBtn },
-	"2": { color: lightBtn },
-	"3": { color: lightBtn },
+	1: { color: lightBtn },
+	2: { color: lightBtn },
+	3: { color: lightBtn },
 	"÷": { color: theme },
 	"": { color: lightBtn },
-	"0": { color: lightBtn },
+	0: { color: lightBtn },
 	".": { color: lightBtn },
 	"=": { color: theme },
 };
