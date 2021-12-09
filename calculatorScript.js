@@ -135,6 +135,6 @@ const buttonProps = {
 	"÷": { color: theme },
 	"": { color: lightBtn },
 	"0": { color: lightBtn },
-	"": { color: lightBtn },
+	".": { color: lightBtn },
 	"=": { color: theme },
 };
