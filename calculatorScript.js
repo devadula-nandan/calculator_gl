@@ -74,6 +74,9 @@ const burnItDown = () => {
 
 const handleClick = (buttonName) => {
 	if (!buttonName) return burnItDown();
+	if (buttonName == "."){
+		console.log(result.innerHTML[-1])
+	}
 	if (buttonName === "C") clearScreen();
 	else if (buttonName === "CE") {
 		if (result.innerHTML.length === 1) result.innerHTML = "";
@@ -82,7 +85,7 @@ const handleClick = (buttonName) => {
 				0,
 				result.innerHTML.length - 1
 			);
-	} else if (!isNaN(buttonName) || buttonName == ".") {
+	} else if (!isNaN(buttonName)) {
 		if (result.innerHTML === "") result.innerHTML = buttonName;
 		else if (result.innerHTML.length < 9) result.innerHTML += buttonName;
 	} else handleOperator(buttonName);
