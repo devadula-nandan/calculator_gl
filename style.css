@@ -12,7 +12,7 @@ html {
 body {
 	margin: 0px;
 	min-height: 100vh;
-	background-image: url("./bgimg.jpg");
+	background-image: url("./bgImg.jpg");
     	backdrop-filter: brightness(0.5);
     	height: 100vh;
 	background-attachment: fixed;
