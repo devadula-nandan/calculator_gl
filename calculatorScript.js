@@ -71,6 +71,12 @@ const performOperation = (num1, num2) => {
 		default:
 			_result = 0;
 	}
+	if(String(_result).length >= 9 && String(_result).includes(".")) {
+		const limit = 8 - String(_result).split('.')[0].length;
+		_result = _result.toFixed(limit);
+		if(_result - Math.round(_result) < 1 / Math.pow(10, 11)) 
+			_result = Math.round(_result);
+	}
 	_result = String(_result);
 	if (_result === "Infinity") return clearScreen("Can't divide by", "zero");
 	else if (_result.length > 9) return clearScreen("Range", "Error");
@@ -117,7 +123,7 @@ const handleClick = (buttonName) => {
 		if (result.innerHTML === "0") result.innerHTML = buttonName;
 		else if (result.innerHTML.length < 9) result.innerHTML += buttonName;
 	} else if (buttonName === ".") {
-		if (decimalUsed == false) {
+		if (decimalUsed === false) {
 			result.innerHTML += buttonName;
 		}
 	}
@@ -127,9 +133,9 @@ const handleClick = (buttonName) => {
 window.addEventListener("load", () => {
 	const buttonList = document.getElementById("button-list");
 	result = document.getElementById("result");
-	result.style.color = theme
+	result.style.color = theme;
 	expression = document.getElementById("expression");
-	expression.style.color = theme
+	expression.style.color = theme;
 	explosion = document.getElementById('explosion');
 	buttons.forEach((button) => {
 		const buttonItem = document.createElement("button");
