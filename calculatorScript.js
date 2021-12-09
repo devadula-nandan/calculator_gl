@@ -1,4 +1,4 @@
-let prevNumber, prevOperator, result, expression, explosion;
+let prevNumber, prevOperator, result, expression, explosion, colorScheme;
 let decimalUsed = false
 
 const clearScreen = (a, b) => {
@@ -66,6 +66,7 @@ const handleOperator = (operator) => {
 	}
 };
 
+//fun, try pressing the blank button
 const burnItDown = () => {
 	explosion.style.display = 'block';
 	explosion.src = './fun.gif';
@@ -75,6 +76,7 @@ const burnItDown = () => {
 }
 
 const handleClick = (buttonName) => {
+	result.innerHTML.includes(".") ? decimalUsed = true : decimalUsed = false;
 	if (!buttonName) return burnItDown();
 
 	if (buttonName === "C") clearScreen();
@@ -91,7 +93,6 @@ const handleClick = (buttonName) => {
 	} else if (buttonName === ".") {
 		if (decimalUsed == false) {
 			result.innerHTML += buttonName;
-			decimalUsed = true
 		}
 	}
 	else handleOperator(buttonName);
@@ -118,31 +119,35 @@ window.addEventListener("load", () => {
 
 const buttons = ["C", "CE", "%", "+", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "÷", "", "0", ".", "=",];
 
+// random button theming
 const rng = (lower, upper) => Math.floor(lower + (upper + 1 - lower) * Math.random());
 h = rng(0, 360)
 s = rng(20, 50)
-const theme = `hsl(${h}deg,${s}%,${40}%)`, lightBtn = `hsl(${h}deg,${s}%,${90}%)`;
-
+const theme = `hsl(${h}deg,${s}%,${40}%)`;
+let themeLightOrDark = `hsl(${h}deg,${s}%,${90}%)`;
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+	themeLightOrDark = `hsl(${h}deg,${s}%,${10}%)`;
+}
 
 const buttonProps = {
 	C: { color: theme },
 	CE: { color: theme },
 	"%": { color: theme },
 	"+": { color: theme },
-	7: { color: lightBtn },
-	8: { color: lightBtn },
-	9: { color: lightBtn },
+	7: { color: themeLightOrDark },
+	8: { color: themeLightOrDark },
+	9: { color: themeLightOrDark },
 	x: { color: theme },
-	4: { color: lightBtn },
-	5: { color: lightBtn },
-	6: { color: lightBtn },
+	4: { color: themeLightOrDark },
+	5: { color: themeLightOrDark },
+	6: { color: themeLightOrDark },
 	"-": { color: theme },
-	1: { color: lightBtn },
-	2: { color: lightBtn },
-	3: { color: lightBtn },
+	1: { color: themeLightOrDark },
+	2: { color: themeLightOrDark },
+	3: { color: themeLightOrDark },
 	"÷": { color: theme },
-	"": { color: lightBtn },
-	0: { color: lightBtn },
-	".": { color: lightBtn },
+	"": { color: themeLightOrDark },
+	0: { color: themeLightOrDark },
+	".": { color: themeLightOrDark },
 	"=": { color: theme },
 };
