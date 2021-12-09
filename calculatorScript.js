@@ -1,14 +1,15 @@
 let prevNumber, prevOperator, result, expression, explosion;
+let decimalUsed = false
 
 const clearScreen = (a, b) => {
 	if (a, b) {
 		expression.innerHTML = a;
 		result.innerHTML = b;
 		setTimeout(() => {
-			result.innerHTML = "";
+			result.innerHTML = "0";
 			expression.innerHTML = "";
 		}, 1000);
-	} else { result.innerHTML = ""; expression.innerHTML = "" }
+	} else { result.innerHTML = "0"; expression.innerHTML = "" }
 	prevNumber = prevOperator = null;
 	return false;
 };
@@ -18,16 +19,16 @@ const performOperation = (num1, num2) => {
 	(num1 = Number(num1)), (num2 = Number(num2));
 	switch (prevOperator) {
 		case "+":
-			_result = num1 + num2;
+			_result = (num1 * 10 + num2 * 10) / 10;
 			break;
 		case "-":
-			_result = num1 - num2;
+			_result = (num1 * 10 - num2 * 10) / 10;
 			break;
 		case "x":
 			_result = num1 * num2;
 			break;
 		case "÷":
-			_result = num1 / num2;
+			_result = (num1 * 10) / (num2 * 10);
 			break;
 		case "%":
 			_result = num1 % num2;
@@ -42,7 +43,8 @@ const performOperation = (num1, num2) => {
 };
 
 const handleOperator = (operator) => {
-	if (isNaN(result.innerHTML)) result.innerHTML = "";
+	decimalUsed = false;
+	if (isNaN(result.innerHTML)) result.innerHTML = "0";
 	if (operator === "=") {
 		if (prevOperator) {
 			expression.innerHTML = `${prevNumber} ${prevOperator} ${result.innerHTML} = `;
@@ -59,7 +61,7 @@ const handleOperator = (operator) => {
 			prevNumber = _result;
 		} else prevNumber = result.innerHTML;
 		prevOperator = operator;
-		result.innerHTML = "";
+		result.innerHTML = "0";
 		expression.innerHTML = `${prevNumber} ${operator}`;
 	}
 };
@@ -74,21 +76,25 @@ const burnItDown = () => {
 
 const handleClick = (buttonName) => {
 	if (!buttonName) return burnItDown();
-	if (buttonName == "."){
-		console.log(result.innerHTML[-1])
-	}
+
 	if (buttonName === "C") clearScreen();
 	else if (buttonName === "CE") {
-		if (result.innerHTML.length === 1) result.innerHTML = "";
+		if (result.innerHTML.length === 1) result.innerHTML = "0";
 		else
 			result.innerHTML = result.innerHTML.slice(
 				0,
 				result.innerHTML.length - 1
 			);
 	} else if (!isNaN(buttonName)) {
-		if (result.innerHTML === "") result.innerHTML = buttonName;
+		if (result.innerHTML === "0") result.innerHTML = buttonName;
 		else if (result.innerHTML.length < 9) result.innerHTML += buttonName;
-	} else handleOperator(buttonName);
+	} else if (buttonName === ".") {
+		if (decimalUsed == false) {
+			result.innerHTML += buttonName;
+			decimalUsed = true
+		}
+	}
+	else handleOperator(buttonName);
 };
 
 window.addEventListener("load", () => {
@@ -102,7 +108,7 @@ window.addEventListener("load", () => {
 		const buttonItem = document.createElement("button");
 		buttonItem.innerHTML = button;
 		buttonItem.style.background = buttonProps[button].color;
-		buttonProps[button].color == theme ? buttonItem.style.color = "white" : buttonItem.style.color = theme;;
+		buttonProps[button].color == theme ? buttonItem.style.color = "white" : buttonItem.style.color = theme;
 		buttonItem.addEventListener("click", ({ target: { innerHTML } }) =>
 			handleClick(button)
 		);
@@ -113,8 +119,8 @@ window.addEventListener("load", () => {
 const buttons = ["C", "CE", "%", "+", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "÷", "", "0", ".", "=",];
 
 const rng = (lower, upper) => Math.floor(lower + (upper + 1 - lower) * Math.random());
-h=rng(0, 360)
-s=rng(20, 50)
+h = rng(0, 360)
+s = rng(20, 50)
 const theme = `hsl(${h}deg,${s}%,${40}%)`, lightBtn = `hsl(${h}deg,${s}%,${90}%)`;
 
 
