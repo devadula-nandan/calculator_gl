@@ -107,7 +107,7 @@ window.addEventListener("load", () => {
 	});
 });
 
-const buttons = ["C", "CE", "%", "+", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "÷", "", "0", "", "=",
+const buttons = ["C", "CE", "%", "+", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "÷", "", "0", ".", "=",
 ];
 
 const rng = (lower, upper) => Math.floor(lower + (upper + 1 - lower) * Math.random());
