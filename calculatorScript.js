@@ -54,19 +54,20 @@ const performOperation = (num1, num2) => {
 	(num1 = Number(num1)), (num2 = Number(num2));
 	switch (prevOperator) {
 		case "+":
-			_result = (num1 * 10 + num2 * 10) / 10;
+			_result = (parseFloat(num1+num2).toPrecision(8));
 			break;
 		case "-":
-			_result = (num1 * 10 - num2 * 10) / 10;
+			_result = (parseFloat(num1-num2).toPrecision(8));
 			break;
 		case "x":
 			_result = num1 * num2;
+			_result = (parseFloat(num1+num2).toPrecision(8));
 			break;
 		case "÷":
-			_result = (num1 * 10) / (num2 * 10);
+			_result = (parseFloat(num1/num2).toPrecision(8));
 			break;
 		case "%":
-			_result = num1 % num2;
+			_result = (parseFloat(num1%num2).toPrecision(8));
 			break;
 		default:
 			_result = 0;
