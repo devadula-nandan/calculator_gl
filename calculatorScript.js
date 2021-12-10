@@ -72,7 +72,7 @@ const performOperation = (num1, num2) => {
 		default:
 			_result = 0;
 	}
-	_result = String(_result);
+	_result = _result.toString();
 	if (_result === "Infinity") return clearScreen("Can't divide by", "zero");
 	else if (_result.length > 9) return clearScreen("Range", "Error");
 	return _result;
