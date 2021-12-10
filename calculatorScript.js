@@ -67,13 +67,13 @@ const performOperation = (num1, num2) => {
 			break;
 		case "%":
 			(num1/num2)
-			_result = Number(parseFloat(((num1 % num2) + num2) % num2).toPrecision(12))
+			_result = Number(parseFloat(num1%num2).toPrecision(12))
 			break;
 		default:
 			_result = 0;
 	}
 	_result = String(_result);
-	if (_result === "Infinity") return clearScreen("Can't divide by", "zero");
+	if (_result === "Infinity") return clearScreen("Can't divide by", "Zero");
 	if (_result === "NaN") return clearScreen("Syntax", "Error");
 	if (_result.includes(".")){
 		if (_result.split('.')[0].length <= 8) return _result.split('.')[0] + "." + (_result.split('.')[1].length > 8 - _result.split('.')[0].length  ? (_result.split('.')[1].slice(0 , (8-_result.split('.')[0].length))) :(_result.split('.')[1]) )
@@ -86,10 +86,11 @@ const performOperation = (num1, num2) => {
 };
 const handleOperator = (operator) => {
 	console.log(prevOperator);
-	decimalUsed = false;
-	if (isNaN(result.innerHTML)) result.innerHTML = "0";
 	if (operator === "=") {
-		if (prevOperator) {
+		decimalUsed = false;
+		if (["+","-"].includes(result.innerHTML) && result.innerHTML.length == 1){
+			return clearScreen("Syntax", "Error");
+		} else if (prevOperator) {
 			expression.innerHTML = `${prevNumber} ${prevOperator} ${result.innerHTML} = `;
 			let _result = performOperation(prevNumber, result.innerHTML);
 			if (!_result) return;
@@ -97,6 +98,7 @@ const handleOperator = (operator) => {
 			prevNumber = result.innerHTML;
 			prevOperator = null;
 		}
+		
 	} else {
 		if (prevOperator) {
 			let _result = performOperation(prevNumber, result.innerHTML);
