@@ -122,6 +122,8 @@ const handleClick = (buttonName) => {
 				0,
 				result.innerHTML.length - 1
 			);
+	}else if(["+","-"].includes(buttonName) && result.innerHTML == "0"){
+		result.innerHTML = buttonName;
 	} else if (!isNaN(buttonName)) {
 		if (result.innerHTML === "0") result.innerHTML = buttonName;
 		else if (result.innerHTML.length < 9) result.innerHTML += buttonName;
@@ -130,8 +132,6 @@ const handleClick = (buttonName) => {
 			result.innerHTML += buttonName;
 		}
 	} else if(["%" , "x" , "÷"].includes(`${expression.innerHTML[expression.innerHTML.length-1]}`) && ["+","-"].includes(buttonName)){
-		result.innerHTML = buttonName;
-	} else if(["+","-"].includes(buttonName) && result.innerHTML == "0"){
 		result.innerHTML = buttonName;
 	}
 	else handleOperator(buttonName);
