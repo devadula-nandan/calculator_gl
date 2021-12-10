@@ -23,8 +23,8 @@ body {
 	margin: 0px;
 	min-height: 100vh;
 	background-image: url("bgImg.jpg");
-    backdrop-filter: brightness(0.5);
-    height: 100vh;
+    	backdrop-filter: brightness(0.5);
+    	height: 100vh;
 	background-attachment: fixed;
 	display: flex;
 	justify-content: center;
@@ -61,7 +61,7 @@ body {
 	padding: 1.5rem;
 	margin: 0px;
 	display: grid;
-	grid-gap: 3vmin;
+	grid-gap: calc(0.7vmax - 0.7vmin);
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(5, 1fr);
 }
@@ -95,7 +95,6 @@ body {
 	.buttons{
 		height: 124vmin;
     		width: 100vmin;
-		grid-gap: 4vmin;
 	}
 	.buttons button{
 		height: unset;
