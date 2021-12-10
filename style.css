@@ -102,8 +102,8 @@ body {
 		width: unset;
 	}
 	.display{
-		margin-top: calc(80vh - 124vw);
-		margin-bottom: 2vh;
+		margin-top: calc(82vh - 128vw);
+		margin-bottom: 4vh;
 	}
 	.result{
 		font-size: 17vw;	
