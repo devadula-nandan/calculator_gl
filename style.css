@@ -103,7 +103,7 @@ body {
 	}
 	.display{
 		margin-top: calc(82vh - 128vw);
-		margin-bottom: 4vh;
+		margin-bottom: 4vw;
 	}
 	.result{
 		font-size: 17vw;	
