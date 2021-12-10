@@ -61,7 +61,7 @@ body {
 	padding: 1.5rem;
 	margin: 0px;
 	display: grid;
-	grid-gap: calc(0.7vmax - 0.7vmin);
+	grid-gap: calc(0.7vmax + 0.7vmin);
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(5, 1fr);
 }
