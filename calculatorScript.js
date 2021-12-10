@@ -128,7 +128,7 @@ const handleClick = (buttonName) => {
 		}
 	} else if(["%" , "x" , "÷"].includes(`${expression.innerHTML[expression.innerHTML.length-1]}`) && ["+","-"].includes(buttonName)){
 		result.innerHTML = buttonName;
-	} else if(["+","-"].includes(buttonName)){
+	} else if(["+","-"].includes(buttonName) && result.innerHTML.length == 0){
 		result.innerHTML = buttonName;
 	}
 	else handleOperator(buttonName);
