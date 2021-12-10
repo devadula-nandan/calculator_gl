@@ -95,6 +95,7 @@ body {
 	.buttons{
 		height: 124vmin;
     		width: 100vmin;
+		padding: 1rem;
 	}
 	.buttons button{
 		height: unset;
