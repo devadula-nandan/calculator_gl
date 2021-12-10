@@ -92,4 +92,12 @@ body {
 		width: 100vw;
 		border-radius: 0px;
 	}
+	.buttons{
+		height: 124vmin;
+    		width: 100vmin;
+	}
+	.buttons button{
+		height: unset;
+		width: unset;
+	}
 }
