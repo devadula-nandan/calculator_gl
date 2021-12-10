@@ -1,6 +1,7 @@
 let prevNumber, prevOperator, result, expression, explosion;
 let decimalUsed = false
 const buttons = ["C", "CE", "%", "+", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "÷", "", "0", ".", "=",];
+const trim = (str, chars) => str.split(chars).filter(Boolean).join(chars);
 
 // random button theming
 const rng = (lower, upper) => Math.floor(lower + (upper + 1 - lower) * Math.random());
@@ -54,20 +55,19 @@ const performOperation = (num1, num2) => {
 	(num1 = Number(num1)), (num2 = Number(num2));
 	switch (prevOperator) {
 		case "+":
-			_result = (parseFloat(num1+num2).toPrecision(8));
+			_result = trim((parseFloat(num1+num2).toPrecision(8)) , "0")
 			break;
 		case "-":
-			_result = (parseFloat(num1-num2).toPrecision(8));
+			_result = trim((parseFloat(num1-num2).toPrecision(8)) , "0")
 			break;
 		case "x":
-			_result = num1 * num2;
-			_result = (parseFloat(num1+num2).toPrecision(8));
+			_result = trim((parseFloat(num1*num2).toPrecision(8)) , "0")
 			break;
 		case "÷":
-			_result = (parseFloat(num1/num2).toPrecision(8));
+			_result = trim((parseFloat(num1/num2).toPrecision(8)) , "0")
 			break;
 		case "%":
-			_result = (parseFloat(num1%num2).toPrecision(8));
+			_result = trim((parseFloat(num1%num2).toPrecision(8)) , "0")
 			break;
 		default:
 			_result = 0;
