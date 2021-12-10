@@ -71,12 +71,6 @@ const performOperation = (num1, num2) => {
 		default:
 			_result = 0;
 	}
-	if(String(_result).length >= 9 && String(_result).includes(".")) {
-		const limit = 8 - String(_result).split('.')[0].length;
-		_result = _result.toFixed(limit);
-		if(_result - Math.round(_result) < 1 / Math.pow(10, 11)) 
-			_result = Math.round(_result);
-	}
 	_result = String(_result);
 	if (_result === "Infinity") return clearScreen("Can't divide by", "zero");
 	else if (_result.length > 9) return clearScreen("Range", "Error");
