@@ -54,7 +54,7 @@ const performOperation = (num1, num2) => {
 	(num1 = Number(num1)), (num2 = Number(num2));
 	switch (prevOperator) {
 		case "+":
-			_result = Number(parseFloat(num1+num2).toPrecision(8))
+			_result = Number(parseFloat(num1+num2).toPrecision(8)) // type casting to numbers to remove trailing zeros automatically
 			break;
 		case "-":
 			_result = Number(parseFloat(num1-num2).toPrecision(8))
