@@ -54,24 +54,24 @@ const performOperation = (num1, num2) => {
 	(num1 = Number(num1)), (num2 = Number(num2));
 	switch (prevOperator) {
 		case "+":
-			_result = (parseFloat(num1+num2).toPrecision(8))
+			_result = Number(parseFloat(num1+num2).toPrecision(8))
 			break;
 		case "-":
-			_result = (parseFloat(num1-num2).toPrecision(8))
+			_result = Number(parseFloat(num1-num2).toPrecision(8))
 			break;
 		case "x":
-			_result = (parseFloat(num1*num2).toPrecision(8))
+			_result = Number(parseFloat(num1*num2).toPrecision(8))
 			break;
 		case "÷":
-			_result = (parseFloat(num1/num2).toPrecision(8))
+			_result = Number(parseFloat(num1/num2).toPrecision(8))
 			break;
 		case "%":
-			_result = (parseFloat(num1%num2).toPrecision(8))
+			_result = Number(parseFloat(num1%num2).toPrecision(8))
 			break;
 		default:
 			_result = 0;
 	}
-	_result = _result.toString();
+	_result = String(_result);
 	if (_result === "Infinity") return clearScreen("Can't divide by", "zero");
 	else if (_result.length > 9) return clearScreen("Range", "Error");
 	return _result;
