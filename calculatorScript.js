@@ -1,6 +1,6 @@
 let prevNumber, prevOperator, result, expression, explosion;
 let decimalUsed = false
-const buttons = ["C", "CE", "%", "+", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "÷", "", "0", ".", "=",];
+const buttons = ["C", "CE", "%", "+", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "÷", "", "0", ".", "="];
 const trim = (str, chars) => str.split(chars).filter(Boolean).join(chars);
 
 // random button theming
