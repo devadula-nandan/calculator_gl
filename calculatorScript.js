@@ -67,7 +67,7 @@ const performOperation = (num1, num2) => {
 			break;
 		case "%":
 			(num1/num2)
-			_result = Number(parseFloat(num1%num2).toPrecision(12))
+			_result = Number(parseFloat(((num1 % num2) + num2) % num2).toPrecision(12))
 			break;
 		default:
 			_result = 0;
