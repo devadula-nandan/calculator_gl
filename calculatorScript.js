@@ -73,7 +73,7 @@ const performOperation = (num1, num2) => {
 	}
 	_result = String(_result);
 	if (_result === "Infinity") return clearScreen("Can't divide by", "zero");
-	if _result.includes("."){
+	if (_result.includes(".")){
 		if (_result.split('.')[0].length <= 8) return _result.split('.')[0] + "." + (_result.split('.')[1].length > 8 - _result.split('.')[0].length  ? _result.split('.')[1][8-_result.split('.')[0].length] :_result.split('.')[1] ;)
 		
 	} else {
