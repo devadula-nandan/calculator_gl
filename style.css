@@ -101,4 +101,7 @@ body {
 		height: unset;
 		width: unset;
 	}
+	.display{
+		margin-top: calc(82vh - 124vw);
+	}
 }
