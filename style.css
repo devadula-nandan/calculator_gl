@@ -86,7 +86,7 @@ body {
 }
 
 
-@media only screen and (max-width: 540px) {
+@media only screen and (max-width: 539px) {
 	.calculator {
 		height: 100vh;
 		width: 100vw;
