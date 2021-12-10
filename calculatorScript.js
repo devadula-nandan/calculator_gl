@@ -121,7 +121,7 @@ const handleClick = (buttonName) => {
 	} else if (!isNaN(buttonName)) {
 		if (result.innerHTML === "0") result.innerHTML = buttonName;
 		else if (result.innerHTML.length < 9) result.innerHTML += buttonName;
-	} else if (buttonName === ".") {
+	} else if (buttonName === "." && result.innerHTML.length < 9) {
 		if (decimalUsed === false) {
 			result.innerHTML += buttonName;
 		}
