@@ -20,7 +20,7 @@ const buttonProps = {
 	7: { color: themeAlt },
 	8: { color: themeAlt },
 	9: { color: themeAlt },
-	x: { color: theme },
+	"x": { color: theme },
 	4: { color: themeAlt },
 	5: { color: themeAlt },
 	6: { color: themeAlt },
@@ -66,6 +66,7 @@ const performOperation = (num1, num2) => {
 			_result = Number(parseFloat(num1/num2).toPrecision(12))
 			break;
 		case "%":
+			(num1/num2)
 			_result = Number(parseFloat(num1%num2).toPrecision(12))
 			break;
 		default:
@@ -83,6 +84,7 @@ const performOperation = (num1, num2) => {
 	
 };
 const handleOperator = (operator) => {
+	console.log(prevOperator);
 	decimalUsed = false;
 	if (isNaN(result.innerHTML)) result.innerHTML = "0";
 	if (operator === "=") {
@@ -109,7 +111,6 @@ const handleOperator = (operator) => {
 const handleClick = (buttonName) => {
 	result.innerHTML.includes(".") ? decimalUsed = true : decimalUsed = false;
 	if (!buttonName) return burnItDown();
-
 	if (buttonName === "C") clearScreen();
 	else if (buttonName === "CE") {
 		if (result.innerHTML.length === 1) result.innerHTML = "0";
@@ -125,6 +126,10 @@ const handleClick = (buttonName) => {
 		if (decimalUsed === false && result.innerHTML.length < 9) {
 			result.innerHTML += buttonName;
 		}
+	} else if(["%" , "x" , "÷"].includes(`${expression.innerHTML[expression.innerHTML.length-1]}`) && ["+","-"].includes(buttonName)){
+		result.innerHTML = buttonName;
+	} else if(["+","-"].includes(buttonName)){
+		result.innerHTML = buttonName;
 	}
 	else handleOperator(buttonName);
 };
