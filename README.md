@@ -7,7 +7,7 @@
 # ux implementations
 1) javascript float precision errors are rectified in most cases
 2) max display limit for result is 9 (numbers from 0 - 999999999 including decimal values), beyond which Range Error will be displayed.
-3) if there is decimal in the result and the result lies between 0 - 999999999 including decimal values, total of only 9 charecters will be displayed of the whole answer
+3) if there is decimal in the result and the result lies between 0 - 999999999 (including decimal values), total of only 9 charecters will be displayed of the whole answer
 4) error handling for zero division is implemented
 5) implemented an additional "." button to calculate decimal values (javascript float precision error is also fixed in most cases)
 6) appropriate logics were implemented, to avoid entering multiple decimals for a number.
