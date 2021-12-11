@@ -1,4 +1,4 @@
-let prevNumber, prevOperator, result, expression, explosion;
+let prevNumber, prevOperator, result, expression, explosion , integerPart , fractionalPart;
 let decimalUsed = false
 const buttons = ["C", "CE", "%", "+", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "÷", "", "0", ".", "="];
 
@@ -71,12 +71,13 @@ const performOperation = (num1, num2) => {
 		default:
 			_result = 0;
 	}
-	_result = String(Number(parseFloat(_result).toPrecision(12))); // type casting to numbers to remove trailing zeros automatically and back to string
+	_result = String(Number(parseFloat(_result).toPrecision(12)));// type casting to numbers to remove trailing zeros automatically
 	if (_result === "Infinity") return clearScreen("Can't divide by", "Zero");
 	if (_result === "NaN") return clearScreen("Syntax", "Error");
 	if (_result.includes(".")){
-		if (_result.split('.')[0].length <= 8) return _result.split('.')[0] + "." + (_result.split('.')[1].length > 8 - _result.split('.')[0].length  ? (_result.split('.')[1].slice(0 , (8-_result.split('.')[0].length))) :(_result.split('.')[1]) )
-		
+		integerPart = _result.split('.')[0]
+		fractionalPart = _result.split('.')[1]
+		if (integerPart.length <= 8) return integerPart + "." + (fractionalPart.length > 8 - integerPart.length  ? (fractionalPart.slice(0 , (8-integerPart.length))) :(fractionalPart) )
 	} else {
 		if (_result.length > 9) return (clearScreen("Range", "Error") , console.log(_result));
 		return _result;
@@ -112,7 +113,7 @@ const handleOperator = (operator) => {
 
 const handleClick = (buttonName) => {
 	result.innerHTML.includes(".") ? decimalUsed = true : decimalUsed = false;
-	if (!buttonName) return burnItDown();
+	if (!buttonName) return;
 	if (buttonName === "C") clearScreen();
 	else if (buttonName === "CE") {
 		if (result.innerHTML.length === 1) result.innerHTML = "0";
@@ -121,7 +122,7 @@ const handleClick = (buttonName) => {
 				0,
 				result.innerHTML.length - 1
 			);
-	}else if(["+","-"].includes(buttonName) && result.innerHTML == "0"){
+	}else if(["+","-"].includes(buttonName) && result.innerHTML === "0"){
 		result.innerHTML = buttonName;
 	} else if (!isNaN(buttonName)) {
 		if (result.innerHTML === "0") result.innerHTML = buttonName;
@@ -147,19 +148,10 @@ window.addEventListener("load", () => {
 		const buttonItem = document.createElement("button");
 		buttonItem.innerHTML = button;
 		buttonItem.style.background = buttonProps[button].color;
-		buttonProps[button].color == theme ? buttonItem.style.color = "white" : buttonItem.style.color = theme;
-		buttonItem.addEventListener("click", ({ target: { innerHTML } }) =>
+		buttonProps[button].color === theme ? buttonItem.style.color = "white" : buttonItem.style.color = theme;
+		buttonItem.addEventListener("click", () =>
 			handleClick(button)
 		);
 		buttonList.append(buttonItem);
 	});
 });
-
-//fun, try pressing the blank button
-const burnItDown = () => {
-	explosion.style.display = 'block';
-	explosion.src = './fun.gif';
-	setTimeout(() => {
-		window.close();
-	}, 1000)
-}
