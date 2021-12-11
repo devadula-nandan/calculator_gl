@@ -1,4 +1,4 @@
-let prevNumber, prevOperator, result, expression, explosion, integerPart, fractionalPart;
+let prevNumber, prevOperator, result, expression, integerPart, fractionalPart;
 let decimalUsed = false;
 const buttons = ["C", "CE", "%", "+", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "÷", "", "0", ".", "="];
 
