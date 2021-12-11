@@ -1,4 +1,4 @@
-let prevNumber, prevOperator, result, expression, explosion , integerPart , fractionalPart;
+let prevNumber, prevOperator, result, expression, explosion, integerPart, fractionalPart;
 let decimalUsed = false;
 const buttons = ["C", "CE", "%", "+", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "÷", "", "0", ".", "="];
 
@@ -44,7 +44,7 @@ const clearScreen = (a, b) => {
 			result.innerHTML = "0";
 			expression.innerHTML = "";
 		}, 1000);
-	} else { result.innerHTML = "0"; expression.innerHTML = "" ;}
+	} else { result.innerHTML = "0"; expression.innerHTML = ""; }
 	prevNumber = prevOperator = null;
 	return false;
 };
@@ -54,7 +54,7 @@ const performOperation = (num1, num2) => {
 	(num1 = Number(num1)), (num2 = Number(num2));
 	switch (prevOperator) {
 		case "+":
-			_result = num1 + num2; 
+			_result = num1 + num2;
 			break;
 		case "-":
 			_result = num1 - num2;
@@ -71,24 +71,24 @@ const performOperation = (num1, num2) => {
 		default:
 			_result = 0;
 	}
-	_result = String(Number(parseFloat(_result).toPrecision(12)));// type casting to numbers to remove trailing zeros automatically
+	_result = String(Number(parseFloat(_result).toPrecision(12)));// type casting to numbers to remove trailing zeros automatically, and back to string
 	if (_result === "Infinity") return clearScreen("Can't divide by", "Zero");
 	if (_result === "NaN") return clearScreen("Syntax", "Error");
-	if (_result.includes(".")){
+	if (_result.includes(".")) {
 		integerPart = _result.split('.')[0];
 		fractionalPart = _result.split('.')[1];
-		if (integerPart.length <= 8) return integerPart + "." + (fractionalPart.length > 8 - integerPart.length  ? (fractionalPart.slice(0 , (8-integerPart.length))) :(fractionalPart) );
+		if (integerPart.length <= 8) return integerPart + "." + (fractionalPart.length > 8 - integerPart.length ? (fractionalPart.slice(0, (8 - integerPart.length))) : (fractionalPart));
 	} else {
-		if (_result.length > 9) return (clearScreen("Range", "Error") , console.log(_result));
+		if (_result.length > 9) return (clearScreen("Range", "Error"), console.log(_result));
 		return _result;
 	}
-	
 };
+
 const handleOperator = (operator) => {
 	console.log(prevOperator);
 	if (operator === "=") {
 		decimalUsed = false;
-		if (["+","-"].includes(result.innerHTML) && result.innerHTML.length == 1){
+		if (["+", "-"].includes(result.innerHTML) && result.innerHTML.length == 1) {
 			return clearScreen("Syntax", "Error");
 		} else if (prevOperator) {
 			expression.innerHTML = `${prevNumber} ${prevOperator} ${result.innerHTML} = `;
@@ -98,7 +98,7 @@ const handleOperator = (operator) => {
 			prevNumber = result.innerHTML;
 			prevOperator = null;
 		}
-		
+
 	} else {
 		if (prevOperator) {
 			let _result = performOperation(prevNumber, result.innerHTML);
@@ -117,12 +117,8 @@ const handleClick = (buttonName) => {
 	if (buttonName === "C") clearScreen();
 	else if (buttonName === "CE") {
 		if (result.innerHTML.length === 1) result.innerHTML = "0";
-		else
-			result.innerHTML = result.innerHTML.slice(
-				0,
-				result.innerHTML.length - 1
-			);
-	}else if(["+","-"].includes(buttonName) && result.innerHTML === "0"){
+		else result.innerHTML = result.innerHTML.slice(0, result.innerHTML.length - 1);
+	} else if (["+", "-"].includes(buttonName) && result.innerHTML === "0") {
 		result.innerHTML = buttonName;
 	} else if (!isNaN(buttonName)) {
 		if (result.innerHTML === "0") result.innerHTML = buttonName;
@@ -131,12 +127,13 @@ const handleClick = (buttonName) => {
 		if (decimalUsed === false && result.innerHTML.length < 9) {
 			result.innerHTML += buttonName;
 		}
-	} else if(["%" , "x" , "÷"].includes(`${expression.innerHTML[expression.innerHTML.length-1]}`) && ["+","-"].includes(buttonName)){
+	} else if (["%", "x", "÷"].includes(`${expression.innerHTML[expression.innerHTML.length - 1]}`) && ["+", "-"].includes(buttonName)) {
 		result.innerHTML = buttonName;
 	}
 	else handleOperator(buttonName);
 };
 
+//eventlistener
 window.addEventListener("load", () => {
 	const buttonList = document.getElementById("button-list");
 	result = document.getElementById("result");
