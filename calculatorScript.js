@@ -54,25 +54,24 @@ const performOperation = (num1, num2) => {
 	(num1 = Number(num1)), (num2 = Number(num2));
 	switch (prevOperator) {
 		case "+":
-			_result = Number(parseFloat(num1+num2).toPrecision(12)) // type casting to numbers to remove trailing zeros automatically
+			_result = num1 + num2; 
 			break;
 		case "-":
-			_result = Number(parseFloat(num1-num2).toPrecision(12))
+			_result = num1 - num2;
 			break;
 		case "x":
-			_result = Number(parseFloat(num1*num2).toPrecision(12))
+			_result = num1 * num2;
 			break;
 		case "÷":
-			_result = Number(parseFloat(num1/num2).toPrecision(12))
+			_result = num1 / num2;
 			break;
 		case "%":
-			(num1/num2)
-			_result = Number(parseFloat(num1%num2).toPrecision(12))
+			_result = ((num1 % num2) + num2) % num2;
 			break;
 		default:
 			_result = 0;
 	}
-	_result = String(_result);
+	_result = String(Number(parseFloat(_result).toPrecision(12))); // type casting to numbers to remove trailing zeros automatically and back to string
 	if (_result === "Infinity") return clearScreen("Can't divide by", "Zero");
 	if (_result === "NaN") return clearScreen("Syntax", "Error");
 	if (_result.includes(".")){
