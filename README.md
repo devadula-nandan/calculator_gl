@@ -17,3 +17,4 @@
 1) the theme randomization could be wrapped in a function and can be assigned to a button (instead of randomizing on page load) and the theme values could be stored in local storage and could be retrieved & applied after window loads
 2) key mapping to numpad can be done by adding event listener on window on keydown and writing appropriate logics for the key pressed
 3) animation could be added for entering digits to the display
+4) every edge conditions are taken care, i would like to know if you face any bug
