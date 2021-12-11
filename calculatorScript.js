@@ -1,11 +1,11 @@
 let prevNumber, prevOperator, result, expression, explosion , integerPart , fractionalPart;
-let decimalUsed = false
+let decimalUsed = false;
 const buttons = ["C", "CE", "%", "+", "7", "8", "9", "x", "4", "5", "6", "-", "1", "2", "3", "÷", "", "0", ".", "="];
 
 // random button theming
 const rng = (lower, upper) => Math.floor(lower + (upper + 1 - lower) * Math.random());
-h = rng(0, 360)
-s = rng(20, 50)
+const h = rng(0, 360);
+const s = rng(20, 50);
 const theme = `hsl(${h}deg,${s}%,${40}%)`;
 let themeAlt = `hsl(${h}deg,${s}%,${90}%)`;
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -44,7 +44,7 @@ const clearScreen = (a, b) => {
 			result.innerHTML = "0";
 			expression.innerHTML = "";
 		}, 1000);
-	} else { result.innerHTML = "0"; expression.innerHTML = "" }
+	} else { result.innerHTML = "0"; expression.innerHTML = "" ;}
 	prevNumber = prevOperator = null;
 	return false;
 };
@@ -75,9 +75,9 @@ const performOperation = (num1, num2) => {
 	if (_result === "Infinity") return clearScreen("Can't divide by", "Zero");
 	if (_result === "NaN") return clearScreen("Syntax", "Error");
 	if (_result.includes(".")){
-		integerPart = _result.split('.')[0]
-		fractionalPart = _result.split('.')[1]
-		if (integerPart.length <= 8) return integerPart + "." + (fractionalPart.length > 8 - integerPart.length  ? (fractionalPart.slice(0 , (8-integerPart.length))) :(fractionalPart) )
+		integerPart = _result.split('.')[0];
+		fractionalPart = _result.split('.')[1];
+		if (integerPart.length <= 8) return integerPart + "." + (fractionalPart.length > 8 - integerPart.length  ? (fractionalPart.slice(0 , (8-integerPart.length))) :(fractionalPart) );
 	} else {
 		if (_result.length > 9) return (clearScreen("Range", "Error") , console.log(_result));
 		return _result;
