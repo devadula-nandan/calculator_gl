@@ -1,20 +1,22 @@
-# ui implementations
-1) this calculator can detect dark or light mode of your browser, and can change the theme/background accordingly (on window loads)
-2) a random color theme will be generated for buttons on every page load, with the help of an rng function & the generated theme will always be good (logics for good hsl color generation were implemented) (inspired from google's material you theming on android 12)
-3) responsive on all screens
+# UI Implementations
 
+1. This calculator can detect the dark or light mode of your browser and change the theme/background accordingly upon window load.
+2. A random color theme will be generated for buttons on every page load using an RNG function. The generated theme will always be visually appealing, thanks to implemented logic for good HSL color generation. This feature is inspired by Google's Material You theming on Android 12.
+3. The calculator is designed to be responsive on all screens.
 
-# ux implementations
-1) javascript float precision errors are rectified in most cases
-2) max display limit for result is 9 (numbers from 0 - 999999999 including decimal values), beyond which Range Error will be displayed.
-3) if there is decimal in the result and the result lies between 0 - 999999999 (including decimal values), total of maximum 9 charecters will be displayed of the whole answer
-4) error handling for zero division is implemented
-5) implemented an additional "." button to calculate decimal values (javascript float precision error is also fixed in most cases)
-6) appropriate logics were implemented, to avoid entering multiple decimals for a number.
+# UX Implementations
 
+1. JavaScript float precision errors are rectified in most cases to ensure accurate calculations.
+2. The maximum display limit for the calculator's result is set to 9. Any numbers beyond this limit (0 - 999999999, including decimal values) will display a Range Error.
+3. If the result has a decimal and falls between 0 and 999999999 (including decimal values), a maximum of 9 characters will be displayed for the entire answer.
+4. Error handling is implemented for zero division.
+5. An additional "." button is provided to calculate decimal values, and JavaScript float precision errors are addressed in most cases.
+6. Appropriate logic is implemented to prevent entering multiple decimals for a number.
 
-# further improvements
-1) the theme randomization could be wrapped in a function and can be assigned to a button (instead of randomizing on page load) and the theme values could be stored in local storage and could be retrieved & applied after window loads
-2) key mapping to numpad can be done by adding event listener on window on keydown and writing appropriate logics for the key pressed
-3) animation could be added for entering digits to the display
-4) every edge conditions are taken care, i would like to know if you face any bug
+# Further Improvements
+
+1. The randomization of themes could be wrapped in a function and assigned to a button, allowing users to change the theme dynamically instead of randomizing it on page load. The theme values could also be stored in local storage and retrieved and applied after window loads.
+2. Key mapping to the numpad can be implemented by adding an event listener on the window's keydown event and writing appropriate logic for the pressed key.
+3. Animation could be added to enhance the user experience when entering digits on the display.
+4. Every edge case has been taken care of, but if you encounter any bugs, please let us know.
+
