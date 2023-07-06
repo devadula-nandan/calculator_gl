@@ -1,3 +1,4 @@
+<!-- '{"name":"Calculator Great Learning","version": 12,"tech": ["HTML","CSS","Javascript"],"tags":["frontend"],"snapshots":[]}' -->
 # UI Implementations
 
 1. This calculator can detect the dark or light mode of your browser and change the theme/background accordingly upon window load.
